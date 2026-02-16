@@ -1,0 +1,55 @@
+```json
+{
+	"info": {
+		"name": "Student Enrollment Management API",
+		"description": "Complete collection for the Backend Technical Assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Create Course (POST)",
+			"request": {
+				"auth": { "type": "basic", "basic": [ { "key": "password", "value": "password", "type": "string" }, { "key": "username", "value": "admin", "type": "string" } ] },
+				"method": "POST",
+				"header": [ { "key": "Content-Type", "value": "application/json" } ],
+				"body": { "mode": "raw", "raw": "{\n    \"name\": \"Advanced Spring Boot\",\n    \"description\": \"Learn REST APIs\",\n    \"credits\": 4\n}" },
+				"url": { "raw": "http://localhost:8080/courses", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "courses" ] }
+			}
+		},
+		{
+			"name": "2. Create Student (POST)",
+			"request": {
+				"auth": { "type": "basic", "basic": [ { "key": "password", "value": "password", "type": "string" }, { "key": "username", "value": "admin", "type": "string" } ] },
+				"method": "POST",
+				"header": [ { "key": "Content-Type", "value": "application/json" } ],
+				"body": { "mode": "raw", "raw": "{\n    \"firstName\": \"Alice\",\n    \"lastName\": \"Smith\",\n    \"email\": \"alice.smith@example.com\",\n    \"age\": 22\n}" },
+				"url": { "raw": "http://localhost:8080/students", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "students" ] }
+			}
+		},
+		{
+			"name": "3. Enroll Student in Course (POST)",
+			"request": {
+				"auth": { "type": "basic", "basic": [ { "key": "password", "value": "password", "type": "string" }, { "key": "username", "value": "admin", "type": "string" } ] },
+				"method": "POST",
+				"header": [],
+				"url": { "raw": "http://localhost:8080/students/REPLACE_WITH_STUDENT_UUID/enroll/1", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "students", "REPLACE_WITH_STUDENT_UUID", "enroll", "1" ] }
+			}
+		},
+		{
+			"name": "4. Get Student's Enrolled Courses (GET)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": { "raw": "http://localhost:8080/students/REPLACE_WITH_STUDENT_UUID/courses", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "students", "REPLACE_WITH_STUDENT_UUID", "courses" ] }
+			}
+		},
+		{
+			"name": "5. List Students with Pagination (GET)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": { "raw": "http://localhost:8080/students?page=0&size=5&is_active=true", "protocol": "http", "host": [ "localhost" ], "port": "8080", "path": [ "students" ], "query": [ { "key": "page", "value": "0" }, { "key": "size", "value": "5" }, { "key": "is_active", "value": "true" } ] }
+			}
+		}
+	]
+}
