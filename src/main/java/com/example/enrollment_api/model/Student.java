@@ -1,9 +1,12 @@
 package com.example.enrollment_api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -38,6 +41,10 @@ public class Student {
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt;
+
+    @JsonIgnoreProperties("students") 
+    @EqualsAndHashCode.Exclude 
+    @ToString.Exclude
 
     @ManyToMany
     @JoinTable(

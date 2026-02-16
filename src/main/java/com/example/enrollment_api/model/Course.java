@@ -3,6 +3,8 @@ package com.example.enrollment_api.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import java.time.LocalDateTime;
 import java.util.HashSet;
@@ -28,6 +30,8 @@ public class Course {
     private LocalDateTime createdAt;
 
     @JsonIgnore // Prevents infinite JSON recursion
+    @EqualsAndHashCode.Exclude 
+    @ToString.Exclude
     @ManyToMany(mappedBy = "courses")
     private Set<Student> students = new HashSet<>();
 }
